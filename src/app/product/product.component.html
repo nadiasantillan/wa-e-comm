@@ -1,0 +1,9 @@
+<img src="{{product!.imagePath}}">
+<div *ngIf="product">
+    <span class="name">{{product.name}}</span>
+    <span class="desc">{{product.desc}}</span>
+    <span class="price">$ {{product.price }}</span>
+    <app-nninput [initial]="quantity" [limit]="product.stock" (change)="setQuantity($event)"></app-nninput> de {{product.stock}} disponibles.
+    <a class="link button" href="{{buyLink()}}"><fa-icon [icon]="faWhatsapp"></fa-icon> Comprar</a>
+    <span class="link button" (click)="addToCart(product)"><fa-icon [icon]="faCartPlus"></fa-icon> Agregar al carrito</span>
+</div>

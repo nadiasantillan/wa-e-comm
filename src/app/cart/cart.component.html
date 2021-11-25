@@ -1,0 +1,31 @@
+<div *ngIf="cart.all().length > 0">
+    <span (click)="clear()" class="link button"><fa-icon [icon]="faTrashAlt"></fa-icon> Vaciar carrito</span>
+    <span class="link button" (click)="send()"><fa-icon [icon]="faWhatsapp"></fa-icon> Comprar</span>
+    <table>
+        <thead>
+            <tr>
+                <th></th>
+                <th></th>
+                <th>$ x Unidad</th>
+                <th>Subtotal</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="cart-item" *ngFor="let cartItem of cart.all()">
+                <td class="cart-product-name">{{cartItem.product.name}}</td>
+                <td>
+                    <app-nninput [initial]="cartItem.quantity" [limit]="cartItem.product.stock" [clearButton]="true" (change)="setQuantity(cartItem.product, $event)"></app-nninput>
+                </td>
+                <td class="price">$ {{cartItem.product.price}}</td>
+                <td class="price subtotal-price">$ {{cartItem.product.price * cartItem.quantity}}</td>
+            </tr>
+            <tr>
+                <td colspan="3">Total</td>
+                <td class="price total-price">$ {{cart.total()}}</td>
+            </tr>
+        </tbody>        
+    </table>    
+</div>
+<div *ngIf="cart.all().length == 0">
+    Carrito vacío
+</div>

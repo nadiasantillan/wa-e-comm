@@ -1,0 +1,4 @@
+<fa-icon [icon]="faMinus" (click)="decrement()" class="link button"></fa-icon>
+<span>{{value}}</span>            
+<fa-icon [icon]="faPlus" (click)="increment()" class="link button"></fa-icon>
+<fa-icon [icon]="faTrashAlt" (click)="clear()" class="link button" *ngIf="clearButton"></fa-icon>
