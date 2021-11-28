@@ -18,6 +18,7 @@ export class ProductComponent implements OnInit {
   @Input() product? : Product;
   @Input() cart? : Cart;
   quantity: number = 1;
+  buyLink: string = '';
   faCartPlus = faCartPlus;
   faWhatsapp = faWhatsapp;
 
@@ -25,15 +26,12 @@ export class ProductComponent implements OnInit {
     public matDialog: MatDialog) { }
 
   ngOnInit(): void {
+    let request = `${this.product!.name} (${this.product!.code}) x ${this.quantity}`;
+    this.waService.link(request).subscribe(link => {this.buyLink = link})
   }
 
   setQuantity(quantity: number): void {
     this.quantity = quantity;
-  }
-
-  buyLink(): Observable<string> { 
-    let request = `${this.product!.name} (${this.product!.code}) x ${this.quantity}`;
-    return this.waService.link(request)
   }
 
   addToCart(product: Product): void {
