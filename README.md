@@ -14,6 +14,8 @@ Run `ng generate component component-name` to generate a new component. You can 
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
+    ng build --prod --configuration production
+
 ## Running unit tests
 
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
@@ -30,6 +32,6 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 Correr los siguientes comandos
 
-    ng build
+    ng build --prod --configuration production
     aws s3 rm s3://noisite --recursive --profile admin
     aws s3 cp dist/natura-ui s3://noisite --recursive --profile admin
